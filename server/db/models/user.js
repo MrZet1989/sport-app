@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Follower, ({ foreignKey: 'userId' }));
+      this.hasMany(models.Event, ({ foreignKey: 'userId' }));
     }
   }
   User.init({
@@ -18,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.TEXT,
     photoSrc: DataTypes.TEXT,
     name: DataTypes.STRING,
-    about: DataTypes.TEXT
+    about: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'User',

@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Place extends Model {
     /**
@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Event, ({ foreignKey: 'placeId' }));
+      this.hasMany(models.SportPlace, ({ foreignKey: 'placeId' }));
     }
   }
   Place.init({
     coordinates: DataTypes.STRING,
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Place',
