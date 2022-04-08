@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Sport, ({ foreignKey: 'sportId' }));
-      this.belongsTo(models.Place, ({ foreignKey: 'placeId' }));
-      this.belongsTo(models.User, ({ foreignKey: 'userId' }));
+      this.belongsTo(models.Sport, { foreignKey: 'sportId' });
+      this.belongsTo(models.Place, { foreignKey: 'placeId' });
+      this.belongsTo(models.User, { foreignKey: 'userId' });
     }
   }
   Event.init({
@@ -21,9 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     about: DataTypes.TEXT,
     placeId: DataTypes.INTEGER,
     sportId: DataTypes.INTEGER,
-    userId: DataTypes.DATA,
-    startTime: DataTypes.DATA,
-    endTime: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    startTime: DataTypes.DATE,
+    endTime: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Event',
