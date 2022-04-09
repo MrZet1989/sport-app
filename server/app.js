@@ -18,14 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.json({ message: 'ok' });
+  next();
 });
 
 app.use('/places', place);
 app.use('/events', event);
 app.use('/users', user);
 
-app.listen(serverPORT, () => {
+app.listen(PORT, () => {
   console.log('B PA6OTE');
 });
