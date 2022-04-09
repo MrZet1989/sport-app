@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
   res.json({ message: 'ok' });
 });
 
-app.use('/', place);
-app.use('/', event);
-app.use('/', user);
+app.use('/places', place);
+app.use('/events', event);
+app.use('/users', user);
 
 app.listen(PORT, () => {
   console.log('B PA6OTE');
