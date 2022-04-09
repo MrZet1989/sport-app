@@ -10,7 +10,7 @@ const user = require('./routers/user');
 
 const app = express();
 
-const serverPORT = process.env.PORT;// 4000;
+const PORT = process.env.PORT || 3002;// 4000;
 // process.env.PORT ?? 3002
 app.use(cors());
 app.use(express.json());
