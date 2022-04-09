@@ -3,11 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+
 const place = require('./routers/place');
+const event = require('./routers/event');
+const user = require('./routers/user');
 
 const app = express();
 
-const PORT = process.env.PORT ?? 3002; // 4000
+const PORT = 4000;
 // process.env.PORT ?? 3002
 app.use(cors());
 app.use(express.json());
@@ -20,6 +23,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', place);
+app.use('/', event);
+app.use('/', user);
 
 app.listen(PORT, () => {
   console.log('B PA6OTE');
