@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     placeId: DataTypes.INTEGER,
     sportId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
-    startTime: DataTypes.DATE,
-    endTime: DataTypes.DATE,
+    startTime: DataTypes.STRING,
+    endTime: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Event',
