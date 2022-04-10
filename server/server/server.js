@@ -7,11 +7,11 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
-// const PORT = process.env.PORT || 3007;
-const PORT = 4042;
+const PORT = process.env.PORT || 3007;
+// const PORT = 4042;
 const app = express();
 
-const pathRoot = require('path').join(__dirname, 'client', 'build');
+// const pathRoot = require('path').join(__dirname, 'client', 'build');
 const indexRouter = require('./routes/index');
 const place = require('./routes/place');
 const event = require('./routes/event');
