@@ -9,8 +9,8 @@ const event = require('./routers/event');
 const user = require('./routers/user');
 
 const app = express();
-
-const PORT = process.env.PORT || 3002;// 4000;
+// check
+const PORT = 4000;// 4000;
 // process.env.PORT ?? 3002
 app.use(cors());
 app.use(express.json());
