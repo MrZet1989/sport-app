@@ -34,7 +34,7 @@ app.use(session({
     cookie: { secure: false },
     name: 'auth',
   }));
-
+// check
   app.use('/', indexRouter);
  app.use('/user', userRouter);
 
