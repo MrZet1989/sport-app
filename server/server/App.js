@@ -37,7 +37,7 @@ app.use(session({
 // check
   app.use('/', indexRouter);
  app.use('/user', userRouter);
-
+// check
   app.listen(PORT, () => {
     console.log('Port is ok');
   });
