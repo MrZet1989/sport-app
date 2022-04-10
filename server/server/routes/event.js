@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 router// создание событий
   .route('/addevent')
   .get((req, res) => {
-    res.render('addevent');
+    res.json();
   })
   .post(async (req, res) => {
     const {
@@ -23,7 +23,7 @@ router// создание событий
     } = req.body;
     const userId = req.session.user;
     if (!title || !about || !placeId || !sportId || !userId || !startTime || !endTime) {
-      return res.render('addevent', { message: 'Заполните все поля' });
+      return res.json({ message: 'Заполните все поля' });
     }
     const newEvent = await Event.create({
       title,
@@ -35,7 +35,7 @@ router// создание событий
       endTime,
     }).catch((e) => e);
     if (newEvent instanceof Error) {
-      return res.render('addevent', {
+      return res.json({
         message: 'Такое событие уже существует',
       });
     }
