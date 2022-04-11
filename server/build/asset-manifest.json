@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.9e8e363b.css",
-    "main.js": "/static/js/main.be5d0544.js",
+    "main.css": "/static/css/main.e1d241f1.css",
+    "main.js": "/static/js/main.d396b920.js",
     "static/media/pokoleniya-i-sport_jpeg": "/static/media/pokoleniya-i-sport_162981756798672779.b88baa8ea6cfdf570269.jpeg",
     "index.html": "/index.html",
-    "main.9e8e363b.css.map": "/static/css/main.9e8e363b.css.map",
-    "main.be5d0544.js.map": "/static/js/main.be5d0544.js.map"
+    "main.e1d241f1.css.map": "/static/css/main.e1d241f1.css.map",
+    "main.d396b920.js.map": "/static/js/main.d396b920.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e8e363b.css",
-    "static/js/main.be5d0544.js"
+    "static/css/main.e1d241f1.css",
+    "static/js/main.d396b920.js"
   ]
 }
