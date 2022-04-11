@@ -12,11 +12,12 @@ const PORT = process.env.PORT || 3007;
 const app = express();
 
 // const pathRoot = require('path').join(__dirname, 'client', 'build');
-const indexRouter = require('./routes/index');
-const place = require('./routes/place');
-const event = require('./routes/event');
-const user = require('./routes/user');
-const sportPlace = require('./routes/sportplace');
+const indexRouter = require('./routes/index.router');
+const place = require('./routes/place.router');
+const eventRouter = require('./routes/event.router');
+const user = require('./routes/user.router');
+const sportPlace = require('./routes/sportplace.router');
+const authRouter = require('./routes/auth.router')
 
 app.use(cors(
   {
@@ -37,17 +38,23 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: new FileStore(),
-  cookie: { secure: false },
+  cookie: { 
+    secure: false,
+    httpOnly: true,
+    maxAge: 1e3 * 86400, //кука живет 1 день
+   },
   name: 'auth',
 }));
 // check
 app.get('/test', (req, res) => {
   res.json({ message: 'ok' });
 });
+
+app.use('/auth', authRouter);
 app.use('/index', indexRouter);
 app.use('/user', user);
 app.use('/places', place);
-app.use('/events', event);
+app.use('/events', eventRouter);
 app.use('/sportplaces', sportPlace);
 
 // app.use(express.static(pathRoot));
