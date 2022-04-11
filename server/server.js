@@ -7,14 +7,14 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3007;
+const PORT = 4042//process.env.PORT || 3007;
 // const PORT = 4042;
 const app = express();
 
 // const pathRoot = require('path').join(__dirname, 'client', 'build');
 const indexRouter = require('./routes/index.router');
 const place = require('./routes/place.router');
-const event = require('./routes/event.router');
+const eventRouter = require('./routes/event.router');
 const user = require('./routes/user.router');
 const sportPlace = require('./routes/sportplace.router');
 const authRouter = require('./routes/auth.router')
@@ -54,7 +54,7 @@ app.use('/auth', authRouter);
 app.use('/index', indexRouter);
 app.use('/user', user);
 app.use('/places', place);
-app.use('/events', event);
+app.use('/events', eventRouter);
 app.use('/sportplaces', sportPlace);
 
 // app.use(express.static(pathRoot));
