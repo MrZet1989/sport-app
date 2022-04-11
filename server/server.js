@@ -51,9 +51,9 @@ app.get('/test', (req, res) => {
 });
 
 app.use('/auth', authRouter);
-app.use('/index', indexRouter);
 app.use('/user', user);
 app.use('/places', place);
+app.use('/index', indexRouter);
 app.use('/events', eventRouter);
 app.use('/sportplaces', sportPlace);
 
