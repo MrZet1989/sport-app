@@ -16,6 +16,7 @@ const indexRouter = require('./routes/index');
 const place = require('./routes/place');
 const event = require('./routes/event');
 const user = require('./routes/user');
+const sportPlace = require('./routes/sportplace');
 
 app.use(cors(
   {
@@ -47,6 +48,7 @@ app.use('/index', indexRouter);
 app.use('/user', user);
 app.use('/places', place);
 app.use('/events', event);
+app.use('/sportplaces', sportPlace);
 
 // app.use(express.static(pathRoot));
 // app.get('/*', (req, res) => {
