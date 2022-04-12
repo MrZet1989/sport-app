@@ -5,8 +5,8 @@ const checkAuthor = require('../middlewares/checkAuthor');
 
 const eventRouter = Router();
 
-eventRouter.get('/', checkAuth, eventController.getAllEvent);
-eventRouter.post('/newevent', eventController.addEvent);//добавление события
+eventRouter.get('/', eventController.getAllEvent);
+eventRouter.post('/newevent', eventController.newEvent);//добавление события
 eventRouter.route('/:id')//айди события поидее если не будет работать то  поменять на userId
   .patch(checkAuth, checkAuthor, eventController.editEvent)
   .get(checkAuth, eventController.getEvent);

@@ -1,36 +1,22 @@
 const { Event } = require('../db/models');
 
-const addEvent = async(req,res)=>{//добавить событие
-  console.log('enter')
-  const { 
+const newEvent = async (req, res) => {
+  const {
     title, about,
     placeId, sportId,
     startTime,
     endTime, } = req.body;
-  const userId = req.session.user;
-  if(
-    !title || !about || !placeId 
-    || !sportId || !userId 
-    || !startTime || !endTime
-    ){
-      return res.render('addevent', { message: 'Заполните все поля' });
-    }
-    const newEvent = await Event.create({
-      title,
-      about,
-      placeId,
-      sportId,
-      userId,
-      startTime,
-      endTime,
-    }).cath((e)=> e);
-    if (newEvent instanceof Error) {
-      return res.render('addevent', {
-        message: 'Такое событие уже существует',
-    });
-  }
-  return res.redirect('/')
+  const userId = req.session.user.id;
+  const newEvent = Event.create({
+    title, about,
+    placeId, sportId,
+    startTime,
+    endTime,
+    userId
+  })
+  res.send('ok')
 }
+
 const editEvent = async (req, res) => {//редактировать событие
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
   if (updatedFields.length) {
@@ -73,7 +59,7 @@ const getAllEvent = async (req, res) => {//получить все событи�
 };
 
 module.exports = {
-  addEvent,
+  newEvent,
   editEvent,
   getEvent,
   getAllEvent,
