@@ -18,6 +18,7 @@ const authRouter = require('./routes/auth.router')
 const indexRouter = require('./routes/index.router');
 const eventRouter = require('./routes/event.router');
 const sportPlace = require('./routes/sportplace.router');
+const sportRouter = require('./routes/sport.router')
 
 app.use(cors(
   {
@@ -56,6 +57,7 @@ app.use('/user', user);
 app.use('/places', place);
 app.use('/index', indexRouter);
 app.use('/events', eventRouter);
+app.use('/sports', sportRouter);
 
 // app.use(express.static(pathRoot));
 // app.get('/*', (req, res) => {
