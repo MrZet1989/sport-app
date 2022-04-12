@@ -1,12 +1,13 @@
 const { Event } = require('../db/models');
 
 const newEvent = async (req, res) => {
+  console.log('enter');
   const {
     title, about,
     placeId, sportId,
     startTime,
-    endTime, } = req.body;
-  const userId = req.session.user.id;
+    endTime, userId} = req.body;
+  console.log('userId', userId);
   const newEvent = Event.create({
     title, about,
     placeId, sportId,
