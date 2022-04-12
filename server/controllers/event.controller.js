@@ -1,6 +1,7 @@
 const { Event } = require('../db/models');
 
 const addEvent = async(req,res)=>{//добавить событие
+  console.log('enter')
   const { 
     title, about,
     placeId, sportId,

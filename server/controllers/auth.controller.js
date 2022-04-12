@@ -49,7 +49,7 @@ const signIn = async (req, res) => {//авторизация
   return res.sendStatus(400);
 };
 
-const signOut = async (req, res) => {//выход
+const signOut = async (req, res) => { //выход
   req.session.destroy((err) => {
     if (err) return res.sendStatus(500);
 

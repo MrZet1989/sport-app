@@ -1,0 +1,7 @@
+DB_HOST=127.0.0.1
+DB_NAME=sportik
+DB_USERNAME=postgres
+PORT=5432
+DB_PASS=vektor21
+DB_DIALECT=postgres
+SESSION_SECRET=igra
