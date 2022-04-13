@@ -1,24 +1,23 @@
-const { Event } = require('../db/models');
+const { Event, Follower, User, Sport, Place } = require("../db/models");
+const follower = require("../db/models/follower");
 
 const newEvent = async (req, res) => {
-  console.log('enter');
-  const {
-    title, about,
-    placeId, sportId,
-    startTime,
-    endTime, userId} = req.body;
-  console.log('userId', userId);
+  const { title, about, placeId, sportId, startTime, endTime, userId } =
+    req.body;
   const newEvent = Event.create({
-    title, about,
-    placeId, sportId,
+    title,
+    about,
+    placeId,
+    sportId,
     startTime,
     endTime,
-    userId
-  })
-  res.send('ok')
-}
+    userId,
+  });
+  res.send("ok");
+};
 
-const editEvent = async (req, res) => {//редактировать событие
+const editEvent = async (req, res) => {
+  //редактировать событие
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
   if (updatedFields.length) {
     updatedFields = Object.fromEntries(updatedFields);
@@ -38,7 +37,8 @@ const editEvent = async (req, res) => {//редактировать событи
   return res.sendStatus(418);
 };
 
-const getEvent = async (req, res) => {//получить событие
+const getEvent = async (req, res) => {
+  //получить событие
   const { userId } = req.params;
   try {
     const currentEvent = await Event.findByPk(userId);
@@ -50,7 +50,8 @@ const getEvent = async (req, res) => {//получить событие
   }
 };
 
-const getAllEvent = async (req, res) => {//получить все события
+const getAllEvent = async (req, res) => {
+  //получить все события
   try {
     const allEvent = await Event.findAll();
     return res.json(allEvent);
@@ -59,9 +60,55 @@ const getAllEvent = async (req, res) => {//получить все событи�
   }
 };
 
+const getAboutEvent = async (req, res) => {
+  //получить инфу о событии, юзере кот создал и followers
+  const { id } = req.params;
+  try {
+    let event = await Event.findByPk(id)
+    let followers = await Follower.findAll(
+      {
+        include: [
+          {
+            model: Event,
+            attributes: ['id' ],
+            where: {
+              id,
+            },
+          },
+          {
+            model: User,
+            attributes: ['id', 'name', 'photoSrc'],
+          },
+        ],
+      }
+    );
+    followers = followers.map(el => el.User)
+    let creator = await User.findByPk(event.userId)
+    let sport = await Sport.findByPk(event.sportId)
+    let place = await Place.findByPk(event.placeId)
+    event = {
+      id: event.id,
+      title: event.title,
+      about: event.about,
+      sport: sport.title,
+      place: place.title,
+      creator:{
+        name: creator.name,
+        photoSrc: creator.photoSrc,
+        },
+      followers,
+    }
+    res.json(event);
+  } catch (error) {
+    console.log(error.message);
+    res.sendStatus(500);
+  }
+};
+
 module.exports = {
   newEvent,
   editEvent,
   getEvent,
   getAllEvent,
+  getAboutEvent,
 };

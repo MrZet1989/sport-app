@@ -52,12 +52,12 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRouter);
+app.use('/events', eventRouter);
+app.use('/index', indexRouter);
+app.use('/places', place);
+app.use('/sports', sportRouter);
 app.use('/sportplaces', sportPlace);
 app.use('/user', user);
-app.use('/places', place);
-app.use('/index', indexRouter);
-app.use('/events', eventRouter);
-app.use('/sports', sportRouter);
 
 // app.use(express.static(pathRoot));
 // app.get('/*', (req, res) => {
