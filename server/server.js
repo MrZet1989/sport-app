@@ -6,10 +6,14 @@ const path = require('path');
 // const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
+const {Server} = require('socket.io')
+const http = require('http')
 
 const PORT = 4042//process.env.PORT || 3007;
 // const PORT = 4042;
 const app = express();
+
+const server = http.createServer(app);
 
 // const pathRoot = require('path').join(__dirname, 'client', 'build');
 const user = require('./routes/user.router');
@@ -27,6 +31,13 @@ app.use(cors(
     optionsSuccessStatus: 200,
   },
 ));
+
+const io = new Server(server, {
+  cors:  {
+    origin: 'http://localhost:3000', // port for sockets
+    methods: ['GET', 'POST'],
+  }
+})
 
 // app.use(logger('dev'));
 app.use(express.json());
@@ -73,7 +84,29 @@ app.use('/user', user);
   //res.sendFile('./build/index.html', { root: __dirname });//для билда
 // });
 
+
+io.on('connection', (socket) => {
+  console.log(`User Connected: ${socket.id}`)
+
+  socket.on('join_room', (data) => {
+    socket.join(data)
+    console.log(`User with ID: ${socket.id} joined room: ${data}`)
+  })
+
+  socket.on('send_message', (data) => {
+    socket.to(data.room).emit('receive_message', data)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected', socket.id)
+  })
+})
+
 // check
-app.listen(PORT, () => {
+/*app.listen(PORT, () => {
   console.log('Port is ok');
-});
+});*/
+
+server.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`)
+})
