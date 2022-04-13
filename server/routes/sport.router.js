@@ -1,6 +1,6 @@
 const express = require('express');
-
 const { Sport } = require('../db/models');
+// /sports
 
 const router = express.Router();
 
