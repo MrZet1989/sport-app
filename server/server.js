@@ -43,7 +43,7 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// app.use(express.static(path.join(process.env.PWD, 'public')));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(session({
   secret: process.env.SESSION_SECRET,
