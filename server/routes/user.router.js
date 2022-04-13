@@ -1,5 +1,6 @@
 const express = require('express');
 const sha256 = require('sha256');
+const upload = require('../middlewares/multerMiddlewares');
 
 const router = express.Router();
 
@@ -46,4 +47,37 @@ router.post('/authentification', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.put('/:id',upload.single('file'), async (req,res)=>{
+  console.log(req.file, req.body);
+  try {
+    const { name, email, about } = req.body;
+    if(req.file){
+      const editUser = await User.update({name, email, about, photoSrc: req.file.originalname },{ where: { id: req.params.id }});
+      if(editUser){
+        return res.sendStatus(200);
+      }
+    }
+    else{
+      const editUser = await User.update({name, email, about },{ where: { id: req.params.id }});
+      if(editUser){
+        return res.sendStatus(200);
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500)
+  }
+})
+
+router.get('/:id', async(req,res)=>{
+  try {
+    const userOne = await User.findByPk(req.params.id);
+    const user = {name: userOne.name, email: userOne.email, about: userOne.about, photo: userOne.photoSrc}
+    res.json(user)
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500)
+  }
+})
 module.exports = router;
