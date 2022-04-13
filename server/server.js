@@ -47,7 +47,7 @@ app.use(session({
   name: 'auth',
 }));
 // check
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'ok' });
 });
 
@@ -68,10 +68,10 @@ app.use('/sports', sportRouter);
 //   res.sendFile(path.join(`${__dirname}/index.html`));
 // });
 
-app.get('/*', (req, res) => {
+// app.get('/*', (req, res) => {
   // res.sendFile(path.join((__dirname, 'build', 'index.html')));
-  res.sendFile('./build/index.html', { root: __dirname });
-});
+  //res.sendFile('./build/index.html', { root: __dirname });//для билда
+// });
 
 // check
 app.listen(PORT, () => {
