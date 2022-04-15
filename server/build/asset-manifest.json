@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5c4d01df.css",
+    "main.js": "/static/js/main.3143b77d.js",
+    "static/media/runGirlBG.jpg": "/static/media/runGirlBG.72c164f38572a5c56e6e.jpg",
+    "static/media/squadBG.jpeg": "/static/media/squadBG.3fae88971281a61ff35d.jpeg",
+    "static/media/basket.jpg": "/static/media/basket.01961a49a44238b71c68.jpg",
+    "static/media/foot5.jpg": "/static/media/foot5.1ab5d28c353d7541ec50.jpg",
+    "static/media/volleyBG.jpg": "/static/media/volleyBG.ae9b5610392aeb170bad.jpg",
+    "static/media/pokoleniya-i-sport_jpeg": "/static/media/pokoleniya-i-sport_162981756798672779.b88baa8ea6cfdf570269.jpeg",
+    "index.html": "/index.html",
+    "main.5c4d01df.css.map": "/static/css/main.5c4d01df.css.map",
+    "main.3143b77d.js.map": "/static/js/main.3143b77d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c4d01df.css",
+    "static/js/main.3143b77d.js"
+  ]
+}

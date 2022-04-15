@@ -80,10 +80,10 @@ app.use('/user', user);
 //   res.sendFile(path.join(`${__dirname}/index.html`));
 // });
 
-// app.get('/*', (req, res) => {
+app.get('/*', (req, res) => {
   // res.sendFile(path.join((__dirname, 'build', 'index.html')));
-  //res.sendFile('./build/index.html', { root: __dirname });//для билда
-// });
+  res.sendFile('./build/index.html', { root: __dirname });//для билда
+});
 
 
 io.on('connection', (socket) => {
