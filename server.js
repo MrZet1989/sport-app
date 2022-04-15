@@ -35,7 +35,7 @@ app.use(cors(
 
 const io = new Server(server, {
   cors:  {
-    origin: 'http://localhost:3000', // port for sockets
+    origin: 'https://sportik.herokuapp.com', // port for sockets
     methods: ['GET', 'POST'],
   }
 })
