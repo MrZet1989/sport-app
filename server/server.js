@@ -9,8 +9,9 @@ require('dotenv').config();
 const {Server} = require('socket.io')
 const http = require('http')
 
-const PORT = 4042//process.env.PORT || 3007;
-// const PORT = 4042;
+const PORT = process.env.PORT || 3007;
+// 4042;
+// process.env.PORT || 3007;
 const app = express();
 
 const server = http.createServer(app);
